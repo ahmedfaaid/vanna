@@ -16,8 +16,8 @@ const Header = () => {
         />
         <View style={styles.textContainer}>
           <Text style={styles.text}>
-            <Text style={styles.welcome}>Welcome, </Text>
-            {user.displayName}
+            <Text style={styles.welcome}>WELCOME, </Text>
+            {user.displayName.toUpperCase()}
           </Text>
         </View>
       </View>
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: 'bold',
-    letterSpacing: 1,
   },
   welcome: {
     color: '#D90429',
