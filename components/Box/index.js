@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
-const Box = ({ category, image }) => {
+const Box = ({ category, image, press }) => {
   return (
-    <TouchableOpacity style={styles.box} onPress={() => alert('Pressed')}>
+    <TouchableOpacity style={styles.box} onPress={press}>
       <View style={styles.innerBox}>
         <Image source={image} style={styles.image} />
         <View style={styles.overlay} />

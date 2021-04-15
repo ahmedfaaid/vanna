@@ -4,11 +4,16 @@ import Box from '../../../components/Box';
 
 import categories from '../../../utils/services';
 
-const Main = () => {
+const Main = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {categories.map(({ id, text, image }) => (
-        <Box key={id} category={text} image={image} />
+        <Box
+          key={id}
+          category={text}
+          image={image}
+          press={() => navigation.navigate('Modal')}
+        />
       ))}
     </View>
   );

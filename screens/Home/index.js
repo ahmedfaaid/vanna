@@ -7,9 +7,17 @@ import Main from './Tabs/Main';
 import Custom from './Tabs/Custom';
 import Business from './Tabs/Business';
 import InfoButton from '../../components/InfoButton';
+import Modal from '../Modal';
 
 const TopTabs = createMaterialTopTabNavigator();
 const HomeStack = createStackNavigator();
+const ModalStack = createStackNavigator();
+
+const HomeScreen = () => (
+  <HomeStack.Navigator headerMode="none">
+    <HomeStack.Screen name="Home" component={Home} />
+  </HomeStack.Navigator>
+);
 
 const Home = () => {
   return (
@@ -48,11 +56,8 @@ const styles = StyleSheet.create({
 export default Home;
 
 export const HomeStackScreen = () => (
-  <HomeStack.Navigator>
-    <HomeStack.Screen
-      name="Home"
-      component={Home}
-      options={{ headerShown: false }}
-    />
-  </HomeStack.Navigator>
+  <ModalStack.Navigator mode="modal" headerMode="none">
+    <HomeStack.Screen name="Home" component={HomeScreen} />
+    <ModalStack.Screen name="Modal" component={Modal} />
+  </ModalStack.Navigator>
 );
