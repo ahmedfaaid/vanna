@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "16302757562",
+    "project_id": "home-care-12315",
+    "storage_bucket": "home-care-12315.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16302757562:android:6766cdd49d6c6d98ffd483",
+        "android_client_info": {
+          "package_name": "com.vanna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16302757562-bstfdu1ug5utqlrh86t8if9s2kbsia5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGGjfJm_c4mwUk-hcjoLuMHqrGpjemOwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16302757562-bstfdu1ug5utqlrh86t8if9s2kbsia5i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "16302757562-6ot1gkn6vl2prbjdrfphr1bueu89g6ch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vanna"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
