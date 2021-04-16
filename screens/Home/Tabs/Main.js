@@ -7,12 +7,20 @@ import categories from '../../../utils/services';
 const Main = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {categories.map(({ id, text, image }) => (
+      {categories.map(({ id, text, image, description, packages }) => (
         <Box
           key={id}
           category={text}
           image={image}
-          press={() => navigation.navigate('Modal')}
+          press={() =>
+            navigation.navigate('Modal', {
+              id,
+              text,
+              image,
+              description,
+              packages,
+            })
+          }
         />
       ))}
     </View>
