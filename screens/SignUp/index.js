@@ -22,7 +22,9 @@ const SignUp = ({ navigation }) => {
     confirmPassword: '',
   });
 
-  const { signUp } = useContext(AuthContext);
+  const {
+    authContext: { signUp },
+  } = useContext(AuthContext);
 
   const nameChange = val => {
     setData({
@@ -106,7 +108,7 @@ const SignUp = ({ navigation }) => {
                 secureTextEntry={true}
                 method={confirmPasswordChange}
               />
-              <SubmitButton text="Sign Up" press={submit} />
+              <SubmitButton text="Sign Up" press={() => submit(data)} />
             </View>
             <View style={styles.signInBtnContainer}>
               <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
