@@ -9,11 +9,16 @@ import {
   View,
 } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import RNPickerSelect from 'react-native-picker-select';
+
+import times from '../../utils/times';
 
 const Modal = ({ navigation, route }) => {
   const { id, text, image, description, packages } = route.params;
 
   const [selectedPackage, setSelectedPackage] = useState({});
+  const [startTime, setStartTime] = useState(null);
+  const [duration, setDuration] = useState(null);
 
   const onSelectHandler = pack => {
     setSelectedPackage(pack);
@@ -65,6 +70,48 @@ const Modal = ({ navigation, route }) => {
                 </TouchableOpacity>
               ))}
             </View>
+          </View>
+          <View style={styles.timeSelectorContainer}>
+            <Text style={styles.pickATime}>Pick a start time</Text>
+            <RNPickerSelect
+              onValueChange={value => setStartTime(value)}
+              items={[
+                { label: '1 hour', value: 1 },
+                { label: '2 hours', value: 2 },
+                { label: '4 hours', value: 4 },
+              ]}
+              placeholder={{ label: 'Select A Start Time...' }}
+              style={timeSelector}
+              Icon={() => {
+                return (
+                  <MaterialIcon
+                    name="unfold-more"
+                    color="#D90429"
+                    solid
+                    style={styles.closeBtn}
+                  />
+                );
+              }}
+            />
+          </View>
+          <View style={styles.timeSelectorContainer}>
+            <Text style={styles.pickATime}>Pick a duration</Text>
+            <RNPickerSelect
+              onValueChange={value => setDuration(value)}
+              items={times}
+              placeholder={{ label: 'Select A Start Time...' }}
+              style={timeSelector}
+              Icon={() => {
+                return (
+                  <MaterialIcon
+                    name="unfold-more"
+                    color="#D90429"
+                    solid
+                    style={styles.closeBtn}
+                  />
+                );
+              }}
+            />
           </View>
           <View style={styles.completeContainer}>
             <View>
@@ -144,7 +191,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
-    marginTop: 20,
     paddingVertical: 10,
     justifyContent: 'space-between',
   },
@@ -152,7 +198,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '45%',
     height: 80,
-    marginTop: 15,
+    marginTop: 20,
     marginHorizontal: 5,
     backgroundColor: '#fff',
     borderRadius: 10,
@@ -185,6 +231,36 @@ const styles = StyleSheet.create({
   },
   completeContainer: {
     marginTop: 20,
+  },
+  timeSelectorContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  pickATime: {
+    fontSize: 18,
+  },
+});
+
+const timeSelector = StyleSheet.create({
+  inputIOS: {
+    marginTop: 20,
+    padding: 15,
+    width: '100%',
+    backgroundColor: '#fdc6cf',
+    borderRadius: 10,
+  },
+  inputAndroid: {},
+  placeholder: {
+    color: '#000',
+  },
+  iconContainer: {
+    top: '50%',
+    transform: [
+      {
+        translateY: -4,
+      },
+    ],
+    paddingRight: 5,
   },
 });
 
