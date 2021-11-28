@@ -1,7 +1,9 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, ScrollView, Text, TextInput } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from '../../components/Header';
 import Main from './Tabs/Main';
 import Custom from './Tabs/Custom';
@@ -20,36 +22,49 @@ const HomeScreen = () => (
 );
 
 const Home = () => {
+  const [query, setQuery] = useState('');
+
   return (
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View style={styles.container}>
-        <Header />
-        <TopTabs.Navigator>
-          <TopTabs.Screen name="Main" component={Main} />
-          <TopTabs.Screen name="Custom" component={Custom} />
-          <TopTabs.Screen name="Business" component={Business} />
-        </TopTabs.Navigator>
-        <View style={styles.infoContainer}>
-          <InfoButton text="How To Use" />
-          <InfoButton text="Satisfaction Guarantee" />
+    <SafeAreaView style={{ backgroundColor: '#ffc602' }} edges={['top']}>
+      <Header />
+      <View style={styles.selectorSection}>
+        <View style={styles.searchSection}>
+          <Icon name="search" style={styles.searchIcon} size={16} />
+          <TextInput
+            style={styles.input}
+            placeholder="Search for products"
+            value={query}
+            onChangeText={string => setQuery(string)}
+          />
         </View>
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  infoContainer: {
+  selectorSection: {
     width: '100%',
-    height: '100%',
-    padding: 5,
+    height: '80%',
+    paddingTop: 40,
+    paddingHorizontal: 30,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
+  searchSection: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    borderTopColor: '#9f9f9f',
-    borderTopWidth: 2,
+    width: '100%',
+    backgroundColor: '#f7f7f7',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 10,
+  },
+  searchIcon: {
+    marginRight: 20,
+  },
+  input: {
+    flex: 1,
   },
 });
 
