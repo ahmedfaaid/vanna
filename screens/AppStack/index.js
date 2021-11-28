@@ -72,10 +72,12 @@ const AppStack = () => {
   } else {
     screenToShow = <AuthStackScreen />;
   }
+
+  /* <NavigationContainer>{screenToShow}</NavigationContainer> */
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>{screenToShow}</NavigationContainer>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <AppDrawerScreen />
+    </NavigationContainer>
   );
 };
 
