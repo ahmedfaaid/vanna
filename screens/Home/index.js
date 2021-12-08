@@ -5,6 +5,7 @@ import {
   ScrollView,
   Text,
   TextInput,
+  TouchableOpacity,
   Image,
   StatusBar,
 } from 'react-native';
@@ -56,10 +57,13 @@ const Home = () => {
           </View>
           <View style={styles.storeSection}>
             {stores.map(store => (
-              <View key={store.id} style={styles.storeCard}>
+              <TouchableOpacity
+                key={store.id}
+                style={styles.storeCard}
+                onPress={() => alert('Pressed')}>
                 <Image source={store.image} style={styles.storeImage} />
                 <Text style={styles.storeName}>{store.name}</Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
           <View style={styles.featuredSalesSection}>
