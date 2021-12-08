@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
 import colors from '../../utils/colors';
 
@@ -7,9 +7,9 @@ const SalesCard = ({ text, discount, image, color }) => {
   return (
     <TouchableOpacity
       style={[styles.saleCard, { backgroundColor: colors[color] }]}>
-      <Text>{text}</Text>
-      <Text>{discount}%</Text>
-      <Text>OFF</Text>
+      <Text style={styles.saleText}>{text}</Text>
+      <Text style={styles.saleDiscount}>{discount}%</Text>
+      <Text style={styles.off}>OFF</Text>
       <Image source={image} style={styles.saleImage} />
     </TouchableOpacity>
   );
@@ -21,16 +21,31 @@ const styles = StyleSheet.create({
   saleCard: {
     width: '45%',
     height: 150,
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 5,
-    paddingBottom: 15,
+    justifyContent: 'center',
+    padding: 10,
     marginBottom: 10,
     borderRadius: 10,
   },
+  saleText: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 5,
+  },
+  saleDiscount: {
+    fontSize: 28,
+    fontWeight: '600',
+    marginRight: 30,
+  },
+  off: {
+    fontSize: 20,
+    marginRight: 50,
+  },
   saleImage: {
-    flex: 1,
-    width: '10%',
-    resizeMode: 'contain',
+    width: 40,
+    height: 40,
+    position: 'absolute',
+    right: 10,
+    bottom: 10,
   },
 });
