@@ -1,12 +1,23 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+} from 'react-native';
 
 import colors from '../../utils/colors';
 
 const SalesCard = ({ text, discount, image, color }) => {
   return (
     <TouchableOpacity
-      style={[styles.saleCard, { backgroundColor: colors[color] }]}
+      style={[
+        styles.saleCard,
+        { backgroundColor: colors[color] },
+        Platform.OS === 'ios' ? styles.iosShadow : styles.androidShadow,
+      ]}
       onPress={() => alert('Pressed')}>
       <Text style={styles.saleText}>{text}</Text>
       <Text style={styles.saleDiscount}>{discount}%</Text>
@@ -48,5 +59,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     bottom: 10,
+  },
+  iosShadow: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  androidShadow: {
+    elevation: 20,
+    shadowColor: '#52006A',
   },
 });

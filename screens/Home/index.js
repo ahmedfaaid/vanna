@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
+  Platform,
   ScrollView,
   Text,
   TextInput,
@@ -59,7 +60,12 @@ const Home = () => {
             {stores.map(store => (
               <TouchableOpacity
                 key={store.id}
-                style={styles.storeCard}
+                style={[
+                  styles.storeCard,
+                  Platform.OS === 'ios'
+                    ? styles.iosShadow
+                    : styles.androidShadow,
+                ]}
                 onPress={() => alert('Pressed')}>
                 <Image source={store.image} style={styles.storeImage} />
                 <Text style={styles.storeName}>{store.name}</Text>
@@ -149,6 +155,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     marginTop: 20,
+  },
+  iosShadow: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  androidShadow: {
+    elevation: 20,
+    shadowColor: '#52006A',
   },
 });
 
