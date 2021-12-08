@@ -6,7 +6,8 @@ import colors from '../../utils/colors';
 const SalesCard = ({ text, discount, image, color }) => {
   return (
     <TouchableOpacity
-      style={[styles.saleCard, { backgroundColor: colors[color] }]}>
+      style={[styles.saleCard, { backgroundColor: colors[color] }]}
+      onPress={() => alert('Pressed')}>
       <Text style={styles.saleText}>{text}</Text>
       <Text style={styles.saleDiscount}>{discount}%</Text>
       <Text style={styles.off}>OFF</Text>
