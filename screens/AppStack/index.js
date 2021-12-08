@@ -74,11 +74,7 @@ const AppStack = () => {
   }
 
   /* <NavigationContainer>{screenToShow}</NavigationContainer> */
-  return (
-    <NavigationContainer>
-      <AppDrawerScreen />
-    </NavigationContainer>
-  );
+  return <NavigationContainer>{screenToShow}</NavigationContainer>;
 };
 
 export default AppStack;
